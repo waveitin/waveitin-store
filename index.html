@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>waveitin-store| Premium accessories,shoes,bags,room decor,content kits Store</title>
+  <style>
+    /* CSS Styles */
+    :root {
+      --primary-color: #0d6efd;
+      --dark-color: #212529;
+      --light-color: #f8f9fa;
+      --gray-color: #6c757d;
+      --accent-color: #198754;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color:var(--light-color);
+      color: var(--dark-color);
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: lowercase;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem auto;
+      opacity: 0.9;
+    }
+
+    /* Products Section */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--dark-color);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: #eee;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.25rem;
+      color: var(--accent-color);
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .add-to-cart-btn {
+      margin-top: auto;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #0b5ed7;
+    }
+
+    /* Cart Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .close-btn {
+      background: var(--gray-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">waveitin-store</div>
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+      <div class="cart-icon" onclick="openCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to waveitin-store</h1>
+    <p>Your one-stop destination for high-quality, trusted product and excepectional service Browse our products and order directly online!</p>
+  </section>
+
+  <!-- Products Section -->
+  <main class="container" id="products">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="product-grid" id="product-grid">
+      <!-- Products will load dynamically via JS -->
+    </div>
+  </main>
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cart-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeCart()">Close</button>
+      <h2>Your Shopping Cart</h2>
+      <div id="cart-items" style="margin-top: 1.5rem;"></div>
+      <p style="margin-top: 1rem; font-weight: bold;">Total: #<span id="cart-total">0.00</span></p>
+      <button class="checkout-btn" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 waveitin. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Sample Products Array (You can edit these to match your actual items)
+    const products = [
+      { id: 1, name: "Smart Electronics Accessory", price: 25.00, img: "https://via.placeholder.com/250" },
+      { id: 2, name: "Premium Wearable Device", price: 45.00, img: "https://via.placeholder.com/250" },
+      { id: 3, name: "Everyday Home Essential", price: 15.00, img: "https://via.placeholder.com/250" },
+      { id: 4, name: "Modern Lifestyle Item", price: 30.00, img: "https://via.placeholder.com/250" }
+    ];
+
+    let cart = [];
+
+    // Render products on page load
+    function displayProducts() {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = products.map(product => `
+        <div class="product-card">
+          <img src="${product.img}" alt="${product.name}" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">${product.name}</h3>
+            <div class="product-price">$${product.price.toFixed(2)}</div>
+            <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Add item to cart
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      cart.push(product);
+      updateCartUI();
+    }
+
+    // Update cart counter and contents
+    function updateCartUI() {
+      document.getElementById('cart-count').innerText = cart.length;
+      
+      const cartItemsDiv = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+      } else {
+        cartItemsDiv.innerHTML = cart.map((item, index) => `
+          <div class="cart-item">
+            <span>${item.name}</span>
+            <span>$${item.price.toFixed(2)}</span>
+          </div>
+        `).join('');
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('cart-total').innerText = total.toFixed(2);
+    }
+
+    function openCart() {
+      document.getElementById('cart-modal').style.display = 'flex';
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').style.display = 'none';
+    }
+
+    // Direct WhatsApp Checkout
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      
+      // Update with your actual WhatsApp phone number including country code (e.g. 2341234567890)
+      const phoneNumber = "+2347041170233"; 
+      
+      let message = "Hello waveitin! I would like to order:\n\n";
+      cart.forEach((item, i) => {
+        message += `#{i + 1}. #{item.name} - ##{item.price.toFixed(2)}\n`;
+      });
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      message += `\nTotal: ##{total.toFixed(2)}`;
+
+      const url = `https://wa.me/#{+2347041170233}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    // Initialize
+    displayProducts();
+  </script>
+</body>
+</html>
